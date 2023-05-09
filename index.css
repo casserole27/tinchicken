@@ -80,6 +80,16 @@ button {
     align-items: center;
 }
 
+@media (min-width: 450px) {
+    h1 {
+        font-size: var(--fs-title);
+    }
+
+    h2 {
+        font-size: var(--fs-m);
+    }
+}
+
 /* ====== IMG STYLING ====== */
 
 .header-icons {
