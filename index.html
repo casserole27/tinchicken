@@ -5,17 +5,76 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
-    <title></title>
+    <title>Tinchicken</title>
 
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <!--GOOGLE FONTS-->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
         
-        <link rel="stylesheet" href="styles.css">
+    <!--CSS STYLE SHEET-->
+    <link rel="stylesheet" href="index.css">
+
 </head>
 
 <!-- 
     Author: Cassie Lewis
     https://clewisdev.com
-    Date: 
+    Date: May 2023
  -->
+
+ <body>
+
+    <div class="body-container">
+
+        <header>
+
+            <img src="images/icon-profile.png" 
+                alt="" 
+                class="header-icons"
+                aria-label="view profile">
+            <img src="images/logo.png" 
+                alt="round logo with red background and white feather" 
+                class="logo">
+            <img src="images/icon-chat.png" 
+                alt="" 
+                class="header-icons"
+                aria-label="chat">
+
+        </header>
+
+        <main>
+
+            <img src="/images/cottonball.png" 
+                alt="image of chicken"
+                class="chicken-img">  <!-- update this--> 
+            <h1 class="title">Cottonball</h1>
+            <h2 class="subtitle">Do you like my beard?</h2>
+
+        </main>
+
+        <footer>
+
+            <button>
+                <img src="images/icon-cross.png" 
+                alt="" 
+                class="cross-btn" 
+                id="cross-btn"
+                aria-label="dislike">
+            </button>
+            <button>
+                <img src="images/icon-heart.png" 
+                alt="" 
+                class="heart-btn" 
+                id="cross-btn"
+                aria-label="like">
+            </button>
+
+        </footer>
+
+    </div>
+ </body>
+
+ <script src="index.js" type="module"></script>
+
+</html>
