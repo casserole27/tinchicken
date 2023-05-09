@@ -17,6 +17,8 @@ Date: May 2023
         linear-gradient(180deg, 
         #FFFFFF 0%, 
         #F6F7FB 100%);
+    --red-hover: #FFE7EF;
+    --green-hover: #DBFFF4;
     --red-lg: 
         linear-gradient(225.83deg, 
         #E82D70 -9.5%, 
@@ -78,6 +80,34 @@ button {
 
     display: flex;
     align-items: center;
+}
+
+.cross-btn:hover,
+.cross-btn:active {
+    background-color: var(--red-hover);
+
+}
+
+.cross-btn:focus {
+    outline: 2px solid red;
+}
+
+.heart-btn:hover,
+.heart-btn:active {
+    background-color: var(--green-hover);
+}
+
+.heart-btn:focus {
+    outline: 2px solid mediumspringgreen ;
+}
+
+a:hover {
+    color: green;
+}
+
+a:focus{
+    border-radius: 50%;
+    outline: 2px solid darkgray;
 }
 
 @media (min-width: 450px) {
