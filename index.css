@@ -1,34 +1,41 @@
 /*
 Author: Cassie Lewis
 https://clewisdev.com
-Date: 
+Date: May 2023
 */
 
-/*
-COOLORS color palette link
-https://coolors.co
-*/
-
-/****** VARIABLES ******/
+/* ====== VARIABLES ====== */
 
 :root {
     
     /*COLORS*/
-  
-    
+
+    --bg: #E5E5E5;
+    --lt-gray: #D9DEE6;
+    --txt-color:#F8F8F8;
+    --white-lg: 
+        linear-gradient(180deg, 
+        #FFFFFF 0%, 
+        #F6F7FB 100%);
+    --red-lg: 
+        linear-gradient(225.83deg, 
+        #E82D70 -9.5%, 
+        #F06957 109.5%);
+    --green-lg: linear-gradient(228.9deg, 
+        #00D894 10.21%, 
+        #56E9CD 71.53%);
+     
     /*BORDER RADIUS*/
     --br-soft: 1rem;
     --br-round: 50%;
     
     /*FONT SIZES*/
-    --fs-xs: 1rem;
-    --fs-s: 1.25rem;
+    --fs-s: 1rem;
     --fs-m: 1.5rem;
-    --fs-l: 2.25rem;
-    --fs-title: 2.5rem;
+    --fs-title: 2rem;
 }
 
-/****** MARGIN AND PADDING RESET ******/
+/* ====== MARGIN AND PADDING RESET ====== */
 
 * {
     margin: 0;
@@ -36,4 +43,94 @@ https://coolors.co
     box-sizing: border-box;
 }
 
-/******* GLOBAL STYLES *******/
+/* ====== GLOBAL STYLES ====== */
+
+body {
+    background-color: var(--bg);
+    font-family: 'Poppins', sans-serif;
+    
+    display: flex;
+    justify-content: center;
+}
+
+h1 {
+    font-size: var(--fs-m);
+}
+
+h2 {
+    font-size: var(--fs-s);
+    font-weight: 400;
+}
+
+h1,
+h2 {
+    color: var(--txt-color);
+}
+
+button {
+    background-color: #FFFFFF;
+    padding: 2em 2em;
+    margin: 1.5em 0 2.5em 0;
+    border: none;
+    border-radius: var(--br-round);
+    box-shadow: 0px 4px 4px var(--lt-gray);
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+}
+
+/* ====== IMG STYLING ====== */
+
+.header-icons {
+    width: 34px;
+    height: 34px;
+}
+
+.logo {
+    width: 84px;
+}   
+
+.header-icons, 
+.logo { 
+    margin: 1.25em 0;
+}
+
+.chicken-img {
+    display: block;
+    width: 97%;
+    margin: 0 auto;
+    border-radius: var(--br-soft);
+}
+
+
+/* ====== LAYOUT ====== */
+
+.body-container {
+    max-width: 500px;
+    background: var(--white-lg);
+}
+
+header {
+    padding: 0 1.125em;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+main {
+    position: relative;
+}
+
+.txt-container {
+    position: absolute;
+    left: 1em;
+    bottom: .5em;
+}
+
+footer {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+}
