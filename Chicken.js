@@ -1,1 +1,3 @@
-// Create the Chicken class here
+
+
+//TODO create chicken class, use constructor function
