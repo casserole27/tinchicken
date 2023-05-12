@@ -1,13 +1,25 @@
 // Remember to import the data and Dog class!
 //TODO import chicken class
 
+import chickensData from './data.js';
+import Chicken from './Chicken.js'
+
 /****** VARIABLES ******/
 
+const chicken = new Chicken(chickensData[0])
+console.log(chicken)
+//? How to get each chicken?
 
 
 
 
 /****** FUNCTIONS ******/
+
+const render = () => {
+    document.getElementById('main-container').innerHTML = chicken.getChickenHtml()
+}
+
+render()
 
 //TODO add like badge
 
@@ -20,6 +32,7 @@
 //TODO click X icon
 
 //TODO click heart icon
+
 
 
 //*Scrim for "state of app"
