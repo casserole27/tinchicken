@@ -8,6 +8,14 @@ class Chicken {
     getChickenHtml() {
         const {name, avatar, age, bio} = this;
         return `
+        <img src="images/badge-like.png" 
+            alt=""
+            class="hidden badge"
+            id="like-badge">
+        <img src="images/badge-nope.png" 
+            alt=""
+            class="hidden badge"
+            id="nope-badge">    
         <img src="${avatar}" 
         alt="image of chicken"
         class="chicken-img">  <!-- update this alt--> 
@@ -20,6 +28,8 @@ class Chicken {
         </div>  
         `
     };
+
+
 };
 
 export default Chicken

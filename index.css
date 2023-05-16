@@ -122,12 +122,14 @@ a:focus{
 
 /* ====== IMG STYLING ====== */
 
-.header-icons {
+.header-icons,
+.end-icon {
     width: 34px;
     height: 34px;
 }
 
-.logo {
+.logo,
+.end-logo {
     width: 84px;
 }   
 
@@ -163,6 +165,18 @@ main {
     position: relative;
 }
 
+.badge {
+    width: 240px;
+    transform: rotate(-25deg);
+    position: absolute;
+    top: 3rem;
+    left: 1.5rem;
+}
+
+.hidden {
+    display: none;
+}
+
 .txt-container {
     position: absolute;
     left: 1em;
@@ -173,4 +187,46 @@ footer {
     display: flex;
     justify-content: center;
     gap: 1.5rem;
+}
+
+.end-data {
+   
+    text-align: center;
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+}
+
+.end-title {
+    font-size: var(--fs-m);
+    color: black;
+    margin-bottom: 2rem;
+}
+
+.end-logo {
+    margin-bottom: 2rem;
+}
+
+.end-link {
+    font-size: var(--fs-s);
+    text-decoration: none;
+    padding: 1rem;
+    margin-bottom: 3rem;
+    border: 5px solid var(--green-hover);
+    border-radius: var(--br-soft);
+
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+@media (max-width: 450px) {
+    .badge {
+        width: 150px;
+        top: 2rem;
+        left: 1rem;
+    }
 }
