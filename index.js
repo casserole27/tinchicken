@@ -8,6 +8,8 @@ import Chicken from './Chicken.js'
 
 //? How to get each chicken?
 
+const counterEl = document.getElementById('profile-counter');
+
 let chickensArray = ['bob', 'beardie', 'billina', 'mrsbusiness','checkers', 'cottonball', 'cuckoo', 'jiggles']
 let savedProfiles = []
 
@@ -74,7 +76,11 @@ function renderEndMsg() {
 function addSavedProfile(profile) {
     savedProfiles.push(profile);
     console.log(savedProfiles);
-}
+    if (savedProfiles.length > 0) {
+    counterEl.classList.remove('hidden-counter');
+    counterEl.textContent = savedProfiles.length;
+    };
+};
 
 
 /****** EVENT LISTENERS ******/
