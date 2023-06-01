@@ -69,7 +69,14 @@ h2 {
     color: var(--txt-color);
 }
 
-button {
+.header-btn {
+    background-color: #FFFFFF;;
+    border: none;
+    cursor: pointer;
+}
+
+.cross-btn,
+.heart-btn {
     background-color: #FFFFFF;
     padding: 2em 2em;
     margin: 1.5em 0 2.5em 0;
@@ -165,7 +172,10 @@ main {
     position: relative;
 }
 
+/*TODO ***************************/
+
 .badge {
+    display: none;
     width: 240px;
     transform: rotate(-25deg);
     position: absolute;
@@ -173,9 +183,16 @@ main {
     left: 1.5rem;
 }
 
-.hidden {
-    display: none;
+.likebadge {
+    display: block;
 }
+
+.nopebadge {
+    display: block;
+}
+
+
+/*TODO ***************************/
 
 .txt-container {
     position: absolute;
@@ -190,7 +207,6 @@ footer {
 }
 
 .end-data {
-   
     text-align: center;
     padding: 2rem;
 
@@ -203,10 +219,6 @@ footer {
 .end-title {
     font-size: var(--fs-m);
     color: black;
-    margin-bottom: 2rem;
-}
-
-.end-logo {
     margin-bottom: 2rem;
 }
 
@@ -230,3 +242,4 @@ footer {
         left: 1rem;
     }
 }
+

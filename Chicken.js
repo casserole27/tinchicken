@@ -7,14 +7,15 @@ class Chicken {
 
     getChickenHtml() {
         const {name, avatar, age, bio} = this;
+
         return `
         <img src="images/badge-like.png" 
             alt=""
-            class="hidden badge"
+            class="badge"
             id="like-badge">
         <img src="images/badge-nope.png" 
             alt=""
-            class="hidden badge"
+            class="badge"
             id="nope-badge">    
         <img src="${avatar}" 
         alt="image of chicken"
