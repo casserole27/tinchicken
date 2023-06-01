@@ -72,8 +72,10 @@ function renderEndMsg() {
 };
 
 function addSavedProfile(profile) {
+    if (chickensData.hasBeenLiked){
     savedProfiles.push(profile);
     console.log(savedProfiles);
+    }
 }
 
 
@@ -81,13 +83,11 @@ function addSavedProfile(profile) {
 
 document.addEventListener('click', e => {
     if (e.target.dataset.heart){
-        console.log("heart clicked");
         document.getElementById('like-badge').classList.add('likebadge');
         chickensData.hasBeenLiked = true;
         renderChicken();
         addSavedProfile(chicken);
     } else if(e.target.dataset.cross) {
-        console.log("cross clicked");
         document.getElementById('nope-badge').classList.add('nopebadge');
         renderChicken();
     };
