@@ -29,52 +29,44 @@
 
         <header>
 
-            <a href="#">
+            <a href="#" class="profile-link" id="profile-link">
                 <img src="images/icon-profile.png" 
                     alt="" 
                     class="header-icons"
                     aria-label="view profile">
+                <span class="profile-counter" id="profile-counter"></span>    
             </a>    
             
-            <a href="#">
+            <a href="index.html">
                 <img src="images/logo.png" 
                     alt="Tinchicken logo with red background and white feather" 
                     class="logo">
             </a>
             
-            <a href="#">    
+            <button class="header-btn" id="chat-btn">   
                 <img src="images/icon-chat.png" 
                     alt="" 
                     class="header-icons"
                     aria-label="chat">
-            </a>    
+            </button> 
 
         </header>
 
-        <main id="main-container">
+        <main id="main-container"></main>
 
-            <!-- <img src="/images/cottonball.png" 
-                alt="image of chicken"
-                class="chicken-img">  
-            
-            <div class="txt-container">    
-            <h1 class="title">Cottonball</h1>
-            <h2 class="subtitle">Do you like my beard?</h2>
-            </div>     -->
-
-        </main>
-
-        <footer>
+        <footer id="footer-container">
 
             <button class="cross-btn" id="cross-btn">
                 <img src="images/icon-cross.png" 
                 alt="" 
-                aria-label="reject profile"> 
+                aria-label="reject profile"
+                data-cross="nope-badge"> 
             </button>
             <button class="heart-btn" id="heart-btn">
                 <img src="images/icon-heart.png" 
                 alt="" 
-                aria-label="like profile">
+                aria-label="like profile"
+                data-heart="like-badge">
             </button>
 
         </footer>

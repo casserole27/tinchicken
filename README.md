@@ -39,6 +39,10 @@ Requirements:
 Personal stretch goals
 - personal design
 - responsiveness
+- save profiles
+  - profile counter
+  - saved profile page
+  - local storage
 
 [Figma file](https://www.figma.com/file/9jK3qWoOLowFk6XqO6t91g/Tinder-for-Dogs-(Copy)?type=design&node-id=0-1&t=XhKDy9p7DWdVW2j8-0)
 

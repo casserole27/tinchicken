@@ -23,6 +23,14 @@ const chickensData = {
         hasBeenSwiped: false,
         hasBeenLiked: false
     },
+    mrsbusiness: {
+        name: "Mrs. Business",
+        avatar: "images/mrsbusiness.png",
+        age: 8,
+        bio: "I love cheez puffs!",
+        hasBeenSwiped: false,
+        hasBeenLiked: false
+    },
     checkers: {
         name: "Checkers",
         avatar: "images/checkers.png",
