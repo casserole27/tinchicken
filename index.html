@@ -29,17 +29,15 @@
 
         <header>
 
-            <a href="#" class="profile-link" id="profile-link">
-                <div class="profile-container">
-                <img src="images/icon-profile.png" 
+            <button class="profile-btn" id="profilebtn">
+                <!-- <img src="images/icon-profile.png" 
                     alt="" 
                     class="header-icons"
-                    aria-label="view profile">
-                <span class="profile-counter hidden-counter" id="profile-counter"></span>    
-                </div>    
-            </a>    
+                    aria-label="view profile"> -->
+                <span class="profile-counter hidden-counter" id="profile-counter"></span>
+            </button>    
             
-            <a href="index.html">
+            <a href="index.html" id="home-link">
                 <img src="images/logo.png" 
                     alt="Tinchicken logo with red background and white feather" 
                     class="logo">
@@ -55,20 +53,32 @@
         </header>
 
         <main id="main-container"></main>
+        
+        <section class="saved-header">
+        <h2 class="saved-heading hidden"
+        id="saved-heading">
+            🐔 Meet your matches! 🐔
+        </h2>
+        </section>
+        <section 
+            class="saved-profiles-container" 
+            id="saved-profiles-container">
+   
+        </section>
 
         <footer id="footer-container">
 
-            <button class="cross-btn" id="cross-btn">
-                <img src="images/icon-cross.png" 
+            <button class="cross-btn" id="cross-btn" data-cross="nope-badge">
+                <!-- <img src="images/icon-cross.png" 
                 alt="" 
-                aria-label="reject profile"
-                data-cross="nope-badge"> 
+                aria-label="reject profile"-->
+                >  
             </button>
-            <button class="heart-btn" id="heart-btn">
-                <img src="images/icon-heart.png" 
+            <button class="heart-btn" id="heart-btn" data-heart="like-badge">
+                <!-- <img src="images/icon-heart.png" 
                 alt="" 
-                aria-label="like profile"
-                data-heart="like-badge">
+                aria-label="like profile" -->
+                
             </button>
 
         </footer>

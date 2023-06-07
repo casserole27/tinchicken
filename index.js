@@ -6,12 +6,10 @@ import Chicken from './Chicken.js'
 
 /****** VARIABLES ******/
 
-//? How to get each chicken?
-
 const counterEl = document.getElementById('profile-counter');
 
-let chickensArray = ['bob', 'beardie', 'billina', 'mrsbusiness','checkers', 'cottonball', 'cuckoo', 'jiggles']
-let savedProfiles = []
+let chickensArray = ['bob', 'beardie', 'billina', 'mrsbusiness','checkers', 'cottonball', 'cuckoo', 'jiggles'];
+let savedProfiles = [];
 
 /****** FUNCTIONS ******/
 
@@ -31,8 +29,6 @@ let chicken = getNewChicken(); //chicken is going to change, use let
 function renderChicken() {
     if (!chicken.hasBeenSwiped){ //only run if hasBeenSwiped is false
         chicken.hasBeenSwiped = true;
-        // document.getElementById('nope-badge').classList.add('nopebadge')
-
          /*
         set hasBeenSwiped to true when it's time for a new chicken to load
         this part will only run when it is true, 
@@ -44,11 +40,11 @@ function renderChicken() {
                 chicken = getNewChicken();
                 render();
                 chicken.hasBeenSwiped = false;
-            }, 1500)
+            }, 1500);
         } else {
             setTimeout(() => {
-                renderEndMsg();
-            }, 1500)    
+                renderSavedProfiles(savedProfiles);
+            }, 1500);    
         };
     };    
 
@@ -58,49 +54,83 @@ const render = () => document.getElementById('main-container').innerHTML = chick
 
 render();
 
-function renderEndMsg() {
-    document.getElementById('main-container').innerHTML = 
-    `<div class="end-data">
-        <h2 class="end-title">🐔 The chickens have flown the coop!</h2>
-        <a href="index.html">
-        <a href="#" class="end-link">
-        <img src="images/icon-profile.png" 
-            alt="" 
-            class="end-icon"
-            aria-label="view profile">
-            View saved profiles
-        </a>  
-    </div>`
-};
-
-function addSavedProfile(profile) {
-    savedProfiles.push(profile);
-    console.log(savedProfiles);
-    if (savedProfiles.length > 0) {
-    counterEl.classList.remove('hidden-counter');
-    counterEl.textContent = savedProfiles.length;
+function saveProfiles(profile) {
+    if(chicken.hasBeenLiked) {
+        setTimeout(() => {
+            savedProfiles.push(profile);
+            counterEl.classList.remove('hidden-counter');
+            counterEl.textContent = savedProfiles.length;
+        }, 1500);
     };
-};
+};    
 
 
 /****** EVENT LISTENERS ******/
 
 document.addEventListener('click', e => {
     if (e.target.dataset.heart){
-        console.log("heart clicked");
         document.getElementById('like-badge').classList.add('likebadge');
-        chickensData.hasBeenLiked = true;
+        chicken.hasBeenLiked = true;
         renderChicken();
-        addSavedProfile(chicken);
+        saveProfiles(chicken);
     } else if(e.target.dataset.cross) {
-        console.log("cross clicked");
         document.getElementById('nope-badge').classList.add('nopebadge');
         renderChicken();
-    };
+    } else if(e.target.id === 'profilebtn') {
+        renderSavedProfiles(savedProfiles);
+    };    
 });
 
+document.getElementById('saved-profiles-container').addEventListener('click', e => {
+    const profile = e.target.dataset.saved;
+     
+    if (profile){
+        const index = savedProfiles.findIndex(item => item.name === profile)
+        if (index !== -1) {
+            savedProfiles.splice(index, 1);
+            renderSavedProfiles(savedProfiles);
+            counterEl.textContent = savedProfiles.length;
+        };
+    };
+
+    if (savedProfiles.length === 0 ) {
+        window.location.reload(); 
+    }; 
+ });
 
 
+function renderSavedProfiles(arr) {
+    document.getElementById('main-container').classList.add('hidden');
+    document.getElementById('cross-btn').classList.add('hidden');
+    document.getElementById('heart-btn').classList.add('hidden');
+    document.getElementById('saved-heading').classList.remove('hidden');
+
+    //? Should this also be done with classes?
+    let savedProfileFeed = '';
+
+        arr.forEach(profile => {
+            savedProfileFeed += `
+            <div class="saved-profile">
+            
+            <div class="saved-img-container">
+                <img src="${profile.avatar}" 
+                alt="image of chicken"
+                class="saved-img"
+                data-saved="${profile.name}">
+            </div>
+
+            <div class="saved-txt-container">    
+                <h1 class="saved-title">${profile.name},
+                    <span class="saved-age">${profile.age}</span>
+                </h1>
+                <h2 class="saved-bio">${profile.bio}</h2>
+            </div>
+            </div> 
+            `
+        });
+
+    document.getElementById('saved-profiles-container').innerHTML = savedProfileFeed;
+};
 
 //*Scrim for "state of app"
 //https://scrimba.com/learn/frontend/improve-the-ux-disable-the-button-cof174a169d8cc562fc635428

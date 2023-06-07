@@ -1,5 +1,3 @@
-//TODO create chicken class, use constructor function
-
 class Chicken {
     constructor(data){
     Object.assign(this, data);
