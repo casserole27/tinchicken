@@ -291,15 +291,16 @@ footer {
 .saved-img-container:hover::after,
 .saved-img-container:focus::after {
     position: absolute;
-    bottom: 10rem;
-    left: 2.5rem;
+    /* bottom: 10rem; */
+    top: .5rem;
+    left: .5rem;
 
     content: 'click to remove';
     font-size: var(--fs-s);
     text-align: center;
     color: white;
     opacity: .70;
-    padding: 1em;
+    padding: .5em 1em;
     background-color: var(--red);
     border-radius: var(--br-soft);
     cursor: pointer;

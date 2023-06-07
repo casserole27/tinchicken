@@ -40,7 +40,7 @@ function renderChicken() {
                 chicken = getNewChicken();
                 render();
                 chicken.hasBeenSwiped = false;
-            }, 1500);
+            }, 1200);
         } else {
             setTimeout(() => {
                 renderSavedProfiles(savedProfiles);
@@ -60,7 +60,7 @@ function saveProfiles(profile) {
             savedProfiles.push(profile);
             counterEl.classList.remove('hidden-counter');
             counterEl.textContent = savedProfiles.length;
-        }, 1500);
+        }, 1200);
     };
 };    
 
