@@ -34,6 +34,7 @@ Date: May 2023
     --br-round: 50%;
     
     /*FONT SIZES*/
+    --fs-xs: .75rem;
     --fs-s: 1rem;
     --fs-m: 1.5rem;
     --fs-title: 2rem;
@@ -104,10 +105,22 @@ a:focus{
     cursor: pointer;
 }
 
+.cross-btn {
+    width: 92px;
+    height: 92px;
+    background: url(images/icon-cross.png) center no-repeat;
+}
+
+.heart-btn {
+    background: url(images/icon-heart.png) center no-repeat;
+}
+
 .cross-btn,
 .heart-btn {
+    width: 92px;
+    height: 92px;
     background-color: #FFFFFF;
-    padding: 2em 2em;
+    padding: 3.5em 3.5em;
     margin: 1.5em 0 2.5em 0;
     border: none;
     border-radius: var(--br-round);
@@ -137,6 +150,16 @@ a:focus{
     outline: 2px solid mediumspringgreen ;
 }
 
+.profile-btn {
+    position: relative;
+    width: 35px;
+    height: 35px;
+    background: url(images/icon-profile.png) center/35px 35px no-repeat;
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
 /* ====== IMG AND ICON STYLING ====== */
 
 .header-icons,
@@ -146,10 +169,11 @@ a:focus{
 }
 
 .profile-counter {
-    display: block;
+    display: inline-block;
     width: 25px;
     height: 25px;
     font-size: var(--fs-s);
+    font-weight: 700;
     text-align: center;
     background-color: var(--green);
     color: var(--txt-color);
@@ -158,7 +182,7 @@ a:focus{
 
     position: absolute;
     left: 1.5rem;
-    top: 1rem;
+    top: 1.5rem;
 }
 
 .hidden-counter {
@@ -198,21 +222,16 @@ header {
     align-items: center;
 }
 
-.profile-container {
-    position: relative;
-}
-
+.profile-container,
 main {
     position: relative;
 }
 
-/*TODO ***************************/
-
 .badge {
     display: none;
+    position: absolute;
     width: 240px;
     transform: rotate(-25deg);
-    position: absolute;
     top: 3rem;
     left: 1.5rem;
 }
@@ -224,9 +243,6 @@ main {
 .nopebadge {
     display: block;
 }
-
-
-/*TODO ***************************/
 
 .txt-container {
     position: absolute;
@@ -240,35 +256,6 @@ footer {
     gap: 1.5rem;
 }
 
-.end-data {
-    text-align: center;
-    padding: 2rem;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    
-}
-
-.end-title {
-    font-size: var(--fs-m);
-    color: black;
-    margin-bottom: 2rem;
-}
-
-.end-link {
-    font-size: var(--fs-s);
-    text-decoration: none;
-    padding: 1rem;
-    margin-bottom: 3rem;
-    border: 5px solid var(--green-hover);
-    border-radius: var(--br-soft);
-
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-}
-
 @media (max-width: 450px) {
     .badge {
         width: 150px;
@@ -277,3 +264,67 @@ footer {
     }
 }
 
+
+/*====== SAVED PROFILES ======*/
+
+.saved-profiles-container {
+    max-width: 500px;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: .5rem;
+    padding: .5em;
+}
+
+.saved-heading {
+    font-size: var(--fs-m);
+    color: black;
+    text-align: center;
+}
+
+.saved-img {
+    display: block;
+    width: 100%;
+    border-radius: var(--br-soft);
+    cursor: pointer;
+}
+
+.saved-img-container:hover::after,
+.saved-img-container:focus::after {
+    position: absolute;
+    /* bottom: 10rem; */
+    top: .5rem;
+    left: .5rem;
+
+    content: 'click to remove';
+    font-size: var(--fs-s);
+    text-align: center;
+    color: white;
+    opacity: .70;
+    padding: .5em 1em;
+    background-color: var(--red);
+    border-radius: var(--br-soft);
+    cursor: pointer;
+}
+
+.saved-profile {
+    position: relative;
+}
+
+.saved-txt-container {
+    position: absolute;
+    width: 100%;
+    bottom: .5em;
+    left: .5em;
+    cursor: pointer;
+}
+
+.saved-title,
+.saved-bio {
+    font-size: var(--fs-s);
+}
+
+/*====== UTILITY CLASS ======*/
+
+.hidden {               
+    display: none;
+}
