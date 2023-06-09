@@ -1,6 +1,3 @@
-// Remember to import the data and Dog class!
-//TODO import chicken class
-
 import chickensData from './data.js';
 import Chicken from './Chicken.js'
 
@@ -10,10 +7,31 @@ const counterEl = document.getElementById('profile-counter');
 
 let chickensArray = ['bob', 'beardie', 'billina', 'mrsbusiness','checkers', 'cottonball', 'cuckoo', 'jiggles'];
 let savedProfiles = [];
+let savedProfilesLocalStorage = JSON.parse(localStorage.getItem('savedProfiles'));
+let chickensArrayFromLocalStorage = JSON.parse(localStorage.getItem('chickensArray'));
+ 
 
 /****** FUNCTIONS ******/
 
 function getNewChicken() {
+    /* If there are saved profiles in local storage, 
+    and the length of chickensArray in local storage is greater than 0,
+    then the chickensArray value should be assigned from localStorage.
+    This ensures the logic of this function and localStorage have 
+    the most recently updated values, and if the app is reloaded
+    it does not show previous chickens as a choice again.
+    */
+    if (savedProfilesLocalStorage && chickensArrayFromLocalStorage.length > 0) {
+        chickensArray = chickensArrayFromLocalStorage;
+        // console.log(chickensArrayFromLocalStorage.length)
+    // } else if (chickensArrayFromLocalStorage.length === 1) {
+        // console.log(chickensArrayFromLocalStorage.length)
+        // renderSavedProfiles(savedProfiles)
+    }
+    /* Sets most recent value of chickensArray to localStorage,
+    including currently rendered chicken. This gives the opportunity
+    for currently displayed chicken to be saved. */
+    localStorage.setItem('chickensArray', JSON.stringify(chickensArray));
     const nextChickenData = chickensData[chickensArray.shift()];
     //using chickens array to grab data from data.js
     //this is the same as using chickensData[bob]
@@ -22,6 +40,7 @@ function getNewChicken() {
     // if nextChicken Data is true
     //new chickens get assigned data, so we want nextChickenData
     // if there isn't any new data, return empty object
+    
 };
 
 let chicken = getNewChicken(); //chicken is going to change, use let
@@ -50,54 +69,39 @@ function renderChicken() {
 
 };
 
-const render = () => document.getElementById('main-container').innerHTML = chicken.getChickenHtml();
+function render() {
+    if (savedProfilesLocalStorage && chickensArrayFromLocalStorage.length === 0) {
+        renderLocalStorage();
+        renderSavedProfiles(savedProfiles);
+    } else {
+    document.getElementById('main-container').innerHTML = chicken.getChickenHtml();
+    renderLocalStorage();
+    }
+};
 
 render();
 
-function saveProfiles(profile) {
+function renderLocalStorage() {
+    if (savedProfilesLocalStorage) {
+        savedProfiles = savedProfilesLocalStorage;
+        profileCounter();
+    }
+}
+
+function saveChickenProfile(profile) {
     if(chicken.hasBeenLiked) {
         setTimeout(() => {
             savedProfiles.push(profile);
-            counterEl.classList.remove('hidden-counter');
-            counterEl.textContent = savedProfiles.length;
+            profileCounter();
+            localStorage.setItem('savedProfiles', JSON.stringify(savedProfiles));
         }, 1200);
     };
-};    
+};
 
-
-/****** EVENT LISTENERS ******/
-
-document.addEventListener('click', e => {
-    if (e.target.dataset.heart){
-        document.getElementById('like-badge').classList.add('likebadge');
-        chicken.hasBeenLiked = true;
-        renderChicken();
-        saveProfiles(chicken);
-    } else if(e.target.dataset.cross) {
-        document.getElementById('nope-badge').classList.add('nopebadge');
-        renderChicken();
-    } else if(e.target.id === 'profilebtn') {
-        renderSavedProfiles(savedProfiles);
-    };    
-});
-
-document.getElementById('saved-profiles-container').addEventListener('click', e => {
-    const profile = e.target.dataset.saved;
-     
-    if (profile){
-        const index = savedProfiles.findIndex(item => item.name === profile)
-        if (index !== -1) {
-            savedProfiles.splice(index, 1);
-            renderSavedProfiles(savedProfiles);
-            counterEl.textContent = savedProfiles.length;
-        };
-    };
-
-    if (savedProfiles.length === 0 ) {
-        window.location.reload(); 
-    }; 
- });
-
+function profileCounter() {
+    counterEl.classList.remove('hidden-counter');
+    counterEl.textContent = savedProfiles.length;
+}
 
 function renderSavedProfiles(arr) {
     document.getElementById('main-container').classList.add('hidden');
@@ -132,8 +136,43 @@ function renderSavedProfiles(arr) {
     document.getElementById('saved-profiles-container').innerHTML = savedProfileFeed;
 };
 
-//*Scrim for "state of app"
-//https://scrimba.com/learn/frontend/improve-the-ux-disable-the-button-cof174a169d8cc562fc635428
-//* Don't run button code during a pause using booleans
-//If false, run the button code
-//If true, don't run the button code
+function resetApp() {
+    profileCounter();
+    location.reload;
+    localStorage.clear();
+}
+
+/****** EVENT LISTENERS ******/
+
+document.addEventListener('click', e => {
+    if (e.target.dataset.heart){
+        document.getElementById('like-badge').classList.add('likebadge');
+        chicken.hasBeenLiked = true;
+        renderChicken();
+        saveChickenProfile(chicken);
+    } else if(e.target.dataset.cross) {
+        document.getElementById('nope-badge').classList.add('nopebadge');
+        renderChicken();
+    } else if(e.target.id === 'profilebtn') {
+        renderSavedProfiles(savedProfiles);
+    }    
+});
+
+document.getElementById('saved-profiles-container').addEventListener('click', e => {
+    const profile = e.target.dataset.saved;
+    if (profile){
+        const index = savedProfiles.findIndex(item => item.name === profile)
+        if (index !== -1) {
+            savedProfiles.splice(index, 1);
+            renderSavedProfiles(savedProfiles);
+        };
+    };
+
+    if (savedProfiles.length === 0 ) {
+       resetApp();
+    }; 
+ });
+
+ document.getElementById('home-link').addEventListener('click', resetApp);
+
+
