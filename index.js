@@ -170,5 +170,3 @@ document.getElementById('saved-profiles-container').addEventListener('click', e 
  });
 
  document.getElementById('home-link').addEventListener('click', resetApp);
-
-
