@@ -23,11 +23,7 @@ function getNewChicken() {
     */
     if (savedProfilesLocalStorage && chickensArrayFromLocalStorage.length > 0) {
         chickensArray = chickensArrayFromLocalStorage;
-        // console.log(chickensArrayFromLocalStorage.length)
-    // } else if (chickensArrayFromLocalStorage.length === 1) {
-        // console.log(chickensArrayFromLocalStorage.length)
-        // renderSavedProfiles(savedProfiles)
-    }
+    };
     /* Sets most recent value of chickensArray to localStorage,
     including currently rendered chicken. This gives the opportunity
     for currently displayed chicken to be saved. */
@@ -76,7 +72,7 @@ function render() {
     } else {
     document.getElementById('main-container').innerHTML = chicken.getChickenHtml();
     renderLocalStorage();
-    }
+    };
 };
 
 render();
@@ -85,8 +81,8 @@ function renderLocalStorage() {
     if (savedProfilesLocalStorage) {
         savedProfiles = savedProfilesLocalStorage;
         profileCounter();
-    }
-}
+    };
+};
 
 function saveChickenProfile(profile) {
     if(chicken.hasBeenLiked) {
@@ -101,7 +97,7 @@ function saveChickenProfile(profile) {
 function profileCounter() {
     counterEl.classList.remove('hidden-counter');
     counterEl.textContent = savedProfiles.length;
-}
+};
 
 function renderSavedProfiles(arr) {
     document.getElementById('main-container').classList.add('hidden');
