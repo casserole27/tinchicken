@@ -4,7 +4,7 @@ const chickensData = {
         avatar: "images/beardiebird.png",
         alt: "brown and gray-feathered chicken with red crest on green background",
         age: 5,
-        bio: "Beardie bio",
+        bio: "Can I live in your house?",
         hasBeenSwiped: false,
         hasBeenLiked: false
     },
@@ -13,7 +13,7 @@ const chickensData = {
         avatar: "images/billina.png",
         alt: "yellow chicken with red crest walking around on green background",
         age: 6,
-        bio: "Billina bio",
+        bio: "Gnome-slayer, egg-layer",
         hasBeenSwiped: false,
         hasBeenLiked: false
     },
@@ -22,7 +22,7 @@ const chickensData = {
         avatar: "images/bob.png",
         alt: "close-up side profile of chicken with black shiny feathers on green background",
         age: 7,
-        bio: "Bob bio",
+        bio: "I am a polite creeper.",
         hasBeenSwiped: false,
         hasBeenLiked: false
     },
@@ -40,7 +40,7 @@ const chickensData = {
         avatar: "images/checkers.png",
         alt: "close-up side profile of rooster with black and white feathers and red face on gray background",
         age: 3,
-        bio: "Checkers bio",
+        bio: "I am a handsome boi.",
         hasBeenSwiped: false,
         hasBeenLiked: false
     },
@@ -58,7 +58,7 @@ const chickensData = {
         avatar: "images/cuckoopuff.png",
         alt: "white poofy chicken napping in the sun while standing on one leg on green background",
         age: 5,
-        bio: "Cuckoo bio",
+        bio: "I am a cuckoo puff!",
         hasBeenSwiped: false,
         hasBeenLiked: false
     },
@@ -67,7 +67,7 @@ const chickensData = {
         avatar: "images/mrsjiggles.png",
         alt: "close-up side profile of white chicken with large red comb",
         age: 3,
-        bio: "Mrs. Jiggles bio",
+        bio: "Look at my jiggles!",
         hasBeenSwiped: false,
         hasBeenLiked: false
     },
