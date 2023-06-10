@@ -29,61 +29,35 @@
 
         <header>
 
-            <button class="profile-btn" id="profilebtn">
-                <!-- <img src="images/icon-profile.png" 
-                    alt="" 
-                    class="header-icons"
-                    aria-label="view profile"> -->
-                <span class="profile-counter hidden-counter" id="profile-counter"></span>
+            <button class="profile-btn" id="profilebtn" aria-label="view profiles">
+                <span class="profile-counter hidden-counter" id="profile-counter"></span><!--how to make this accessible?-->
             </button>    
             
-            <a href="index.html" id="home-link">
-                <img src="images/logo.png" 
-                    alt="Tinchicken logo with red background and white feather" 
-                    class="logo">
-            </a>
+            <a href="index.html" class= "home-link" id="home-link" aria-label="reset"></a>
             
-            <button class="header-btn" id="chat-btn">   
-                <img src="images/icon-chat.png" 
-                    alt="" 
-                    class="header-icons"
-                    aria-label="chat">
-            </button> 
+            <button class="chat-btn" id="chat-btn" aria-label="chat"></button> 
 
         </header>
 
         <main id="main-container"></main>
         
         <section class="saved-header">
-        <h2 class="saved-heading hidden"
-        id="saved-heading">
-            🐔 Meet your matches! 🐔
-        </h2>
+            <h2 class="saved-heading hidden"
+            id="saved-heading">
+                🐔 Meet your matches! 🐔
+            </h2>
         </section>
-        <section 
-            class="saved-profiles-container" 
-            id="saved-profiles-container">
-   
-        </section>
+        
+        <section class="saved-profiles-container" id="saved-profiles-container"></section>
 
         <footer id="footer-container">
 
-            <button class="cross-btn" id="cross-btn" data-cross="nope-badge">
-                <!-- <img src="images/icon-cross.png" 
-                alt="" 
-                aria-label="reject profile"-->
-                >  
-            </button>
-            <button class="heart-btn" id="heart-btn" data-heart="like-badge">
-                <!-- <img src="images/icon-heart.png" 
-                alt="" 
-                aria-label="like profile" -->
-                
-            </button>
+            <button class="cross-btn" id="cross-btn" aria-label="reject profile" data-cross="nope-badge"></button>
+            <button class="heart-btn" id="heart-btn" aria-label="like profile" data-heart="like-badge"></button>
 
         </footer>
 
-    </div>
+    </div><!--close body container-->
  
 </body>
 

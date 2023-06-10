@@ -44,6 +44,7 @@ let chicken = getNewChicken(); //chicken is going to change, use let
 function renderChicken() {
     if (!chicken.hasBeenSwiped){ //only run if hasBeenSwiped is false
         chicken.hasBeenSwiped = true;
+        // e.preventDefault();
          /*
         set hasBeenSwiped to true when it's time for a new chicken to load
         this part will only run when it is true, 
@@ -94,6 +95,56 @@ function saveChickenProfile(profile) {
     };
 };
 
+
+function buttonSelection (e) {
+    if (e.target.dataset.heart){
+        document.getElementById('like-badge').classList.add('likebadge');
+        chicken.hasBeenLiked = true;
+        renderChicken();
+        saveChickenProfile(chicken);
+    } else if(e.target.dataset.cross) {
+        document.getElementById('nope-badge').classList.add('nopebadge');
+        renderChicken();
+    } else if(e.target.id === 'profilebtn') {
+        renderSavedProfiles(savedProfiles);
+    };
+};
+
+function removeImageOnClick (e) {
+    const profile = e.target.dataset.saved;
+    if (profile){
+        const index = savedProfiles.findIndex(item => item.name === profile)
+        if (index !== -1) {
+            savedProfiles.splice(index, 1);
+            renderSavedProfiles(savedProfiles);
+            profileCounter();
+        };
+    };
+
+    if (savedProfiles.length === 0 ) {
+       resetApp();
+    }; 
+};
+
+function removeImageOnEnter (e) {
+    const profile = e.target.dataset.saved;
+
+    if (e.key === 'Enter') {
+        if (profile){
+            const index = savedProfiles.findIndex(item => item.name === profile)
+            if (index !== -1) {
+                savedProfiles.splice(index, 1);
+                renderSavedProfiles(savedProfiles);
+                profileCounter();
+            };
+        };
+    };    
+
+    if (e.key === 'Enter' && savedProfiles.length === 0 ) {
+        resetApp();
+    }; 
+};
+
 function profileCounter() {
     counterEl.classList.remove('hidden-counter');
     counterEl.textContent = savedProfiles.length;
@@ -116,6 +167,7 @@ function renderSavedProfiles(arr) {
                 <img src="${profile.avatar}" 
                 alt="image of chicken"
                 class="saved-img"
+                tabindex = 0
                 data-saved="${profile.name}">
             </div>
 
@@ -134,39 +186,20 @@ function renderSavedProfiles(arr) {
 
 function resetApp() {
     profileCounter();
-    location.reload;
+    location.reload();
     localStorage.clear();
 }
 
 /****** EVENT LISTENERS ******/
 
-document.addEventListener('click', e => {
-    if (e.target.dataset.heart){
-        document.getElementById('like-badge').classList.add('likebadge');
-        chicken.hasBeenLiked = true;
-        renderChicken();
-        saveChickenProfile(chicken);
-    } else if(e.target.dataset.cross) {
-        document.getElementById('nope-badge').classList.add('nopebadge');
-        renderChicken();
-    } else if(e.target.id === 'profilebtn') {
-        renderSavedProfiles(savedProfiles);
-    }    
-});
+document.addEventListener('click', buttonSelection);
 
-document.getElementById('saved-profiles-container').addEventListener('click', e => {
-    const profile = e.target.dataset.saved;
-    if (profile){
-        const index = savedProfiles.findIndex(item => item.name === profile)
-        if (index !== -1) {
-            savedProfiles.splice(index, 1);
-            renderSavedProfiles(savedProfiles);
-        };
-    };
+// document.addEventListener('keypress', e => {
+//     e.preventDefault();
+// })
 
-    if (savedProfiles.length === 0 ) {
-       resetApp();
-    }; 
- });
+document.getElementById('saved-profiles-container').addEventListener('click', removeImageOnClick);
 
- document.getElementById('home-link').addEventListener('click', resetApp);
+document.getElementById('saved-profiles-container').addEventListener('keypress', removeImageOnEnter);    
+ 
+document.getElementById('home-link').addEventListener('click', resetApp);
