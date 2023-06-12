@@ -95,7 +95,6 @@ function saveChickenProfile(profile) {
     };
 };
 
-
 function buttonSelection (e) {
     if (e.target.dataset.heart){
         document.getElementById('like-badge').classList.add('likebadge');
@@ -105,10 +104,8 @@ function buttonSelection (e) {
     } else if(e.target.dataset.cross) {
         document.getElementById('nope-badge').classList.add('nopebadge');
         renderChicken();
-    } else if(e.target.id === 'profilebtn') {
-        renderSavedProfiles(savedProfiles);
     };
-};
+};    
 
 function removeImageOnClick (e) {
     const profile = e.target.dataset.saved;
@@ -194,9 +191,7 @@ function resetApp() {
 
 document.addEventListener('click', buttonSelection);
 
-// document.addEventListener('keypress', e => {
-//     e.preventDefault();
-// })
+document.getElementById('profile-btn').addEventListener('click', () => renderSavedProfiles(savedProfiles));
 
 document.getElementById('saved-profiles-container').addEventListener('click', removeImageOnClick);
 
