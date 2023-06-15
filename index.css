@@ -63,12 +63,25 @@ h2 {
 }
 
 h1,
-h2 {
+h2,
+h3 {
     color: var(--txt-color);
+}
+
+h3 {
+    font-size: 1rem;
+    text-align: center;
 }
 
 a {
     text-decoration: none;
+    transition: 0.3s;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    transition: 0.3s;
 }
 
 
@@ -83,12 +96,6 @@ a {
 }
 
 /*====== BUTTON STYLING ======*/
-
-.header-btn {
-    background-color: #FFFFFF;;
-    border: none;
-    cursor: pointer;
-}
 
 .home-link {
     width: 6rem;
@@ -114,64 +121,27 @@ a {
     background-color: var(--white);
     padding: 3.5em 3.5em;
     margin: 1.5em 0 2.5em 0;
-    border: none;
     border-radius: var(--br-round);
     box-shadow: 0px 4px 4px var(--lt-gray);
-    cursor: pointer;
 
     display: flex;
     align-items: center;
-}
-
-.cross-btn:hover,
-.cross-btn:active {
-    background-color: var(--red-hover);
-
-}
-
-.cross-btn:focus {
-    outline: 3px solid red;
-}
-
-.heart-btn:hover,
-.heart-btn:active {
-    background-color: var(--green-hover);
-}
-
-.heart-btn:focus {
-    outline: 3px solid mediumspringgreen ;
 }
 
 .profile-btn {
     background: url(images/icon-profile.png) center/35px 35px no-repeat;
 }
 
-.chat-btn {
+.chat-link {
     background: url(images/icon-chat.png) center/35px 35px no-repeat;
 }
 
 .profile-btn,
-.chat-btn {
+.chat-link {
     position: relative;
     width: 50px;
     height: 50px;
     background-color: var(--white-lg);
-    border: none;
-    cursor: pointer;
-}
-
-a:hover,
-.profile-btn:hover,
-.chat-btn:hover {
-    background-color: var(--green);
-    border-radius: var(--br-soft);
-}
-
-a:focus,
-.profile-btn:focus,
-.chat-btn:focus {
-    border-radius: 5px;
-    outline: 3px solid var(--green);
 }
 
 /* ====== IMG AND ICON STYLING ====== */
@@ -339,6 +309,50 @@ footer {
 .saved-bio {
     font-size: var(--fs-s);
 }
+
+/*====== FOCUS, HOVER, AND ACTIVE STATES ======*/
+
+a:hover,
+a:focus,
+button:hover,
+button:focus {
+    transform: scale(1.1);
+}
+
+a:active,
+button:active {
+    transform: scale(0.9);
+}
+
+a:hover,
+.profile-btn:hover {
+    background-color: var(--green);
+    border-radius: var(--br-soft);
+}
+
+a:focus,
+.profile-btn:focus {
+    border-radius: var(--br-soft);
+    outline: 3px solid var(--green);
+}
+
+.cross-btn:hover {
+    background-color: var(--red-hover);
+}
+
+.cross-btn:focus {
+    outline: 3px solid red;
+}
+
+.heart-btn:hover,
+.heart-btn:active {
+    background-color: var(--green-hover);
+}
+
+.heart-btn:focus {
+    outline: 3px solid mediumspringgreen ;
+}
+
 
 /*====== UTILITY CLASS ======*/
 
