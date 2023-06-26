@@ -37,7 +37,7 @@ let chicken = getNewChicken();
 
 function renderChicken() {
     if (!chicken.hasBeenSwiped){ 
-        //! if (chickensArray.length > 0) {
+        //!PREVIOUS CODE if (chickensArray.length > 0) {
         if (chickensData.length > 0) {    
             chicken.hasBeenSwiped = true; 
             saveChickenProfile(chicken)

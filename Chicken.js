@@ -16,8 +16,8 @@ class Chicken {
             class="badge"
             id="nope-badge">    
         <img src="${avatar}" 
-        alt="${alt}"
-        class="chicken-img">  <!-- update this alt--> 
+            alt="${alt}"
+            class="chicken-img">   
     
         <div class="txt-container">    
         <h1 class="title">${name},

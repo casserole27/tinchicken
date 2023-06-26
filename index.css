@@ -84,6 +84,30 @@ button {
     transition: 0.3s;
 }
 
+a:hover,
+a:focus,
+button:hover,
+button:focus {
+    transform: scale(1.1);
+}
+
+a:active,
+button:active {
+    transform: scale(0.9);
+}
+
+a:hover,
+.profile-btn:hover {
+    background-color: var(--green);
+    border-radius: var(--br-soft);
+}
+
+a:focus,
+.profile-btn:focus {
+    border-radius: var(--br-soft);
+    outline: 3px solid var(--green);
+}
+
 
 @media (min-width: 450px) {
     h1 {
@@ -119,13 +143,30 @@ button {
     width: 92px;
     height: 92px;
     background-color: var(--white);
-    padding: 3.5em 3.5em;
+    padding: 3.5em;
     margin: 1.5em 0 2.5em 0;
     border-radius: var(--br-round);
     box-shadow: 0px 4px 4px var(--lt-gray);
 
     display: flex;
     align-items: center;
+}
+
+.cross-btn:hover {
+    background-color: var(--red-hover);
+}
+
+.cross-btn:focus {
+    outline: 3px solid red;
+}
+
+.heart-btn:hover,
+.heart-btn:active {
+    background-color: var(--green-hover);
+}
+
+.heart-btn:focus {
+    outline: 3px solid mediumspringgreen ;
 }
 
 .profile-btn {
@@ -142,6 +183,15 @@ button {
     width: 50px;
     height: 50px;
     background-color: var(--white-lg);
+}
+
+@media (max-width: 450px) {
+    .heart-btn,
+    .cross-btn {
+        width: 75px;
+        height: 75px;
+        padding: 3em;
+    }
 }
 
 /* ====== IMG AND ICON STYLING ====== */
@@ -308,49 +358,6 @@ footer {
 .saved-title,
 .saved-bio {
     font-size: var(--fs-s);
-}
-
-/*====== FOCUS, HOVER, AND ACTIVE STATES ======*/
-
-a:hover,
-a:focus,
-button:hover,
-button:focus {
-    transform: scale(1.1);
-}
-
-a:active,
-button:active {
-    transform: scale(0.9);
-}
-
-a:hover,
-.profile-btn:hover {
-    background-color: var(--green);
-    border-radius: var(--br-soft);
-}
-
-a:focus,
-.profile-btn:focus {
-    border-radius: var(--br-soft);
-    outline: 3px solid var(--green);
-}
-
-.cross-btn:hover {
-    background-color: var(--red-hover);
-}
-
-.cross-btn:focus {
-    outline: 3px solid red;
-}
-
-.heart-btn:hover,
-.heart-btn:active {
-    background-color: var(--green-hover);
-}
-
-.heart-btn:focus {
-    outline: 3px solid mediumspringgreen ;
 }
 
 
