@@ -5,7 +5,12 @@ import Chicken from './Chicken.js'
 
 const counterEl = document.getElementById('profile-counter');
 
-let chickensArray = ['bob', 'beardie', 'billina', 'mrsbusiness','checkers', 'cottonball', 'cuckoo', 'jiggles'];
+//!PREVIOUS CODE
+// let chickensArray = ['bob', 'beardie', 'billina', 'mrsbusiness','checkers', 'cottonball', 'cuckoo', 'jiggles'];
+
+// let chickensArray = chickensData.shift();
+// console.log(chickensArray)
+
 let savedProfiles = [];
 
 const mainContainer = document.getElementById('main-container');
@@ -15,15 +20,25 @@ const savedProfilesContainer =  document.getElementById('saved-profiles-containe
 /****** FUNCTIONS ******/
 
 function getNewChicken() {
+    const nextChickenData = chickensData.shift()
+    return nextChickenData ? new Chicken(nextChickenData) : {};
+};
+
+
+//!PREVIOUS CODE
+/*
+function getNewChicken() {
     const nextChickenData = chickensData[chickensArray.shift()];
     return nextChickenData ? new Chicken(nextChickenData) : {};
 };
+*/
 
 let chicken = getNewChicken(); 
 
 function renderChicken() {
     if (!chicken.hasBeenSwiped){ 
-        if (chickensArray.length > 0) {
+        //! if (chickensArray.length > 0) {
+        if (chickensData.length > 0) {    
             chicken.hasBeenSwiped = true; 
             saveChickenProfile(chicken)
             setTimeout(() => {
@@ -126,7 +141,6 @@ function renderSavedProfiles(arr) {
 function resetApp() { 
     profileCounter();
     location.reload();
-    localStorage.clear();
 }
 
 /****** EVENT LISTENERS ******/
