@@ -74,16 +74,35 @@ Personal stretch goals
 
 - CSS custom properties
 - Responsive Web Design
+- vanilla JavaScript
+- JavaScript classes
 
 ### What I learned
 
 
 ### Continued development
 
+- [Code review](https://scrimba.com/scrim/co32142e0a72507d39689ebb0)
+   - saved profiles container should be populated inside main - not sure how to do that
+   - buttons too large for mobile size 
+   - use the cascade, don't separate hover / focus states - components in same location
+   - chickensData - array of objects, can use the name as a key inside the object
+   - map through each item, item.name, link variable with data
+   - consistent indentation in Classes file
+   - class file - return with a container around everything?
+   - group event listeners, one listener on the document - possibly better performance
+   - use filter method to find hasBeenSwiped to render next chicken
+
+- [Paul's scrim](https://scrimba.com/scrim/coe824d17b7903c07531c5b36)
+
+- [Amir's project change](https://www.loom.com/share/2e61c3a728cc4474b4523fc5778b6fdf?sid=2fbe7f38-b6db-4530-933e-31a7490a3594)
+
 
 ### Useful resources
 
-[Scrimba help](https://projects.scrimba.com/tindog)
+ - [Scrimba help](https://projects.scrimba.com/tindog)
+
+ - [Paul's notes on classes](https://stackblitz.com/edit/javascript-essentials-classes-14jun2023?file=index.js)
 
 
 ## Author
