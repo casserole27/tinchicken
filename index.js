@@ -3,13 +3,11 @@ import Chicken from './Chicken.js'
 
 /****** VARIABLES ******/
 
+
+const badgeEl = document.getElementById('badge-el')
 const counterEl = document.getElementById('profile-counter');
-
-//!PREVIOUS CODE
-// let chickensArray = ['bob', 'beardie', 'billina', 'mrsbusiness','checkers', 'cottonball', 'cuckoo', 'jiggles'];
-
-// let chickensArray = chickensData.shift();
-// console.log(chickensArray)
+const heartBtn = document.getElementById('heart-btn');
+const crossBtn = document.getElementById('cross-btn');
 
 let savedProfiles = [];
 
@@ -20,45 +18,71 @@ const savedProfilesContainer =  document.getElementById('saved-profiles-containe
 /****** FUNCTIONS ******/
 
 function getNewChicken() {
-    const nextChickenData = chickensData.shift()
+    const nextChickenData = chickensData.shift();
     return nextChickenData ? new Chicken(nextChickenData) : {};
 };
 
-
-//!PREVIOUS CODE
-/*
-function getNewChicken() {
-    const nextChickenData = chickensData[chickensArray.shift()];
-    return nextChickenData ? new Chicken(nextChickenData) : {};
-};
-*/
-
-let chicken = getNewChicken(); 
+let chicken = getNewChicken();
 
 function renderChicken() {
-    if (!chicken.hasBeenSwiped){ 
-        //!PREVIOUS CODE if (chickensArray.length > 0) {
+    if (chicken.hasBeenSwiped) { 
+        
         if (chickensData.length > 0) {    
-            chicken.hasBeenSwiped = true; 
+            
+            heartBtn.disabled = true;
+            crossBtn.disabled = true;
             saveChickenProfile(chicken)
             setTimeout(() => {
-                chicken = getNewChicken(); 
+                badgeEl.innerHTML = ''
+                chicken = getNewChicken()
                 render(); 
-                chicken.hasBeenSwiped = false; 
+                heartBtn.disabled = false;
+                crossBtn.disabled = false;
             }, 1200);
+        
         } else {
+            
             saveChickenProfile(chicken) 
             setTimeout(() => {
+                badgeEl.innerHTML = ''
                 renderSavedProfiles(savedProfiles); 
             }, 1500);    
-        };
-    };    
+        
+        }
+    } 
 
 };
 
-const render = () => mainContainer.innerHTML = chicken.getChickenHtml();
+const render = () => mainContainer.innerHTML = chicken.getChickenHtml()
 
 render(); 
+
+function buttonSelection (e) {
+    if (e.target.dataset.heart){
+        chicken.swipeChicken()
+        chicken.likeChicken()     // use chicken method to update hasBeenLiked
+        renderBadges()
+        renderChicken();
+    } 
+    if (e.target.dataset.cross) {
+        chicken.swipeChicken()
+        renderBadges()
+        renderChicken()
+    };    
+}; 
+
+function renderBadges() {
+    if (chicken.hasBeenSwiped && chicken.hasBeenLiked) {
+        badgeEl.innerHTML = chicken.likeBadge()
+    } else {
+        badgeEl.innerHTML = chicken.nopeBadge()
+    }
+};
+
+function profileCounter() { 
+    counterEl.classList.remove('hidden-counter');
+    counterEl.textContent = savedProfiles.length;
+};
 
 function saveChickenProfile(profile) {
     if(chicken.hasBeenLiked) {
@@ -66,17 +90,6 @@ function saveChickenProfile(profile) {
         profileCounter();
     };
 };
-
-function buttonSelection (e) { 
-    if (e.target.dataset.heart){
-        document.getElementById('like-badge').classList.add('likebadge');
-        chicken.hasBeenLiked = true;
-        renderChicken();
-    } else if(e.target.dataset.cross) {
-        document.getElementById('nope-badge').classList.add('nopebadge');
-        renderChicken();
-    };
-};    
 
 function removeImage(e) {
     const profile = e.target.dataset.saved;
@@ -97,16 +110,11 @@ function removeImage(e) {
     };
 };
 
-function profileCounter() { 
-    counterEl.classList.remove('hidden-counter');
-    counterEl.textContent = savedProfiles.length;
-};
 
 function renderSavedProfiles(arr) {
     if (arr.length > 0) {
         mainContainer.classList.add('hidden');
-        document.getElementById('cross-btn').classList.add('hidden');
-        document.getElementById('heart-btn').classList.add('hidden');
+        document.getElementById('footer-container').classList.add('hidden')
         document.getElementById('saved-heading').classList.remove('hidden');
         document.getElementById('saved-subtitle').classList.remove('hidden');
 

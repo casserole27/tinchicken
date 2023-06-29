@@ -49,6 +49,7 @@ Date: May 2023
 body {
     background-color: var(--bg);
     font-family: 'Poppins', sans-serif;  
+    
     display: flex;
     justify-content: center;
 }
@@ -246,6 +247,7 @@ a:focus,
 .body-container {
     max-width: 500px;
     background: var(--white-lg);
+    position: relative;
 }
 
 header {
@@ -262,20 +264,11 @@ main {
 }
 
 .badge {
-    display: none;
     position: absolute;
     width: 240px;
     transform: rotate(-25deg);
-    top: 3rem;
+    top: 8rem;
     left: 1.5rem;
-}
-
-.likebadge {
-    display: block;
-}
-
-.nopebadge {
-    display: block;
 }
 
 .txt-container {
@@ -293,7 +286,7 @@ footer {
 @media (max-width: 450px) {
     .badge {
         width: 150px;
-        top: 2rem;
+        top: 7rem;
         left: 1rem;
     }
 }
