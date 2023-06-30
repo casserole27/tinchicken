@@ -60,7 +60,7 @@ render();
 function buttonSelection (e) {
     if (e.target.dataset.heart){
         chicken.swipeChicken()
-        chicken.likeChicken()     // use chicken method to update hasBeenLiked
+        chicken.likeChicken()     
         renderBadges()
         renderChicken();
     } 
@@ -79,11 +79,10 @@ function renderBadges() {
     }
 };
 
-function profileCounter() { 
-    counterEl.classList.remove('hidden-counter');
-    counterEl.textContent = savedProfiles.length;
-};
 
+//!ADDITIONAL FUNCTIONALITY
+
+//if hasBeenLiked on the object is set to true, push to profile to the saved profiles array and update the profile counter
 function saveChickenProfile(profile) {
     if(chicken.hasBeenLiked) {
         savedProfiles.push(profile);
@@ -91,26 +90,14 @@ function saveChickenProfile(profile) {
     };
 };
 
-function removeImage(e) {
-    const profile = e.target.dataset.saved;
-
-    if (e.key === 'Enter' || e.type === 'click') {
-        if (profile) {
-            const index = savedProfiles.findIndex(item => item.name === profile)
-            if (index !== -1) {
-                savedProfiles.splice(index, 1);
-                renderSavedProfiles(savedProfiles);
-                profileCounter();
-            };
-        };
-    };
-
-    if ((e.key === 'Enter' || e.type === 'click') && savedProfiles.length === 0) {
-        resetApp();
-    };
+//when profiles are saved, the counter is revealed and displays a number equal to the length of the saved profiles array
+function profileCounter() { 
+    counterEl.classList.remove('hidden-counter');
+    counterEl.textContent = savedProfiles.length;
 };
 
 
+//when the profile button is clicked, or we reach the end of the data, render the saved profiles into a new page
 function renderSavedProfiles(arr) {
     if (arr.length > 0) {
         mainContainer.classList.add('hidden');
@@ -146,6 +133,28 @@ function renderSavedProfiles(arr) {
     };    
 };
 
+//remove the profiles on the saved profiles page either by clicking or pressing enter
+function removeImage(e) {
+    const profile = e.target.dataset.saved;
+
+    if (e.key === 'Enter' || e.type === 'click') {
+        if (profile) {
+            const index = savedProfiles.findIndex(item => item.name === profile)
+            if (index !== -1) {
+                savedProfiles.splice(index, 1);
+                renderSavedProfiles(savedProfiles);
+                profileCounter();
+            };
+        };
+    };
+
+    if ((e.key === 'Enter' || e.type === 'click') && savedProfiles.length === 0) {
+        resetApp();
+    };
+};
+
+
+//reset the whole app
 function resetApp() { 
     profileCounter();
     location.reload();
@@ -153,12 +162,16 @@ function resetApp() {
 
 /****** EVENT LISTENERS ******/
 
-document.addEventListener('click', buttonSelection); 
-
-document.getElementById('profile-btn').addEventListener('click', () => renderSavedProfiles(savedProfiles));
+document.addEventListener('click', e => {
+    if (e.target.id === 'profile-btn') {
+        renderSavedProfiles(savedProfiles);
+    } else if (e.target.id === 'home-link') {
+        resetApp();
+    } else {
+        buttonSelection(e);
+    }
+});
 
 savedProfilesContainer.addEventListener('click', removeImage)
 
 savedProfilesContainer.addEventListener('keypress', removeImage)
- 
-document.getElementById('home-link').addEventListener('click', resetApp); 
