@@ -3,7 +3,6 @@ import Chicken from './Chicken.js'
 
 /****** VARIABLES ******/
 
-
 const badgeEl = document.getElementById('badge-el')
 const counterEl = document.getElementById('profile-counter');
 const heartBtn = document.getElementById('heart-btn');

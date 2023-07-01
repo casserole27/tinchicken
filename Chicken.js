@@ -6,18 +6,20 @@ class Chicken {
     getChickenHtml() {
         const {name, avatar, alt, age, bio} = this;
 
-        return `
-        <img src="${avatar}" 
-        alt="${alt}"
-        class="chicken-img">   
+        let chickenFeed = `
+            <img src="${avatar}" 
+            alt="${alt}"
+            class="chicken-img">   
 
-        <div class="txt-container">    
-        <h1 class="title">${name},
-            <span class="age">${age}
-        </h1>
-        <h2 class="subtitle">${bio}</h2>
-        </div>`
+            <div class="txt-container">    
+            <h1 class="title">${name},
+                <span class="age">${age}
+            </h1>
+            <h2 class="subtitle">${bio}</h2>
+            </div> 
+            `
 
+        return chickenFeed;
     };    
 
     swipeChicken() {
@@ -29,21 +31,27 @@ class Chicken {
     }
 
     likeBadge() {
-        return `
-        <img src="images/badge-like.png" 
-        alt=""
-        class="badge"
-        id="like-badge">
-        `
+        
+        let likeBadgeFeed = 
+            `<img src="images/badge-like.png" 
+            alt=""
+            class="badge"
+            id="like-badge">
+            `
+        
+        return likeBadgeFeed; 
     }
 
     nopeBadge() {
-        return `
+
+        let nopeBadgeFeed = `
         <img src="images/badge-nope.png" 
         alt=""
         class="badge"
         id="nope-badge"> 
-        `
+        `  
+        return nopeBadgeFeed;
+      
     }
 
  };
