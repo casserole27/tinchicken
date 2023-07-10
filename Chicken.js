@@ -20,38 +20,31 @@ class Chicken {
             `
 
         return chickenFeed;
-    };    
-
-    swipeChicken() {
-        this.hasBeenSwiped = true;
-    }
+    };   
     
-    likeChicken() {
-        this.hasBeenLiked = true;
-    }
+    chickenStatus(boolean) {
 
-    likeBadge() {
-        
-        let likeBadgeFeed = 
+        this.hasBeenLiked = boolean;
+        this.hasBeenSwiped = true;
+
+        if (this.hasBeenLiked && this.hasBeenSwiped) {
+            let likeBadgeFeed = 
             `<img src="images/badge-like.png" 
             alt=""
             class="badge"
             id="like-badge">
             `
-        
-        return likeBadgeFeed; 
-    }
+            return likeBadgeFeed; 
 
-    nopeBadge() {
-
-        let nopeBadgeFeed = `
-        <img src="images/badge-nope.png" 
-        alt=""
-        class="badge"
-        id="nope-badge"> 
-        `  
-        return nopeBadgeFeed;
-      
+        } else {
+            let nopeBadgeFeed = `
+            <img src="images/badge-nope.png" 
+            alt=""
+            class="badge"
+            id="nope-badge"> 
+            `  
+            return nopeBadgeFeed;
+        }
     }
 
  };

@@ -265,7 +265,7 @@ main {
 
 .badge {
     position: absolute;
-    width: 240px;
+    width: 280px;
     transform: rotate(-25deg);
     top: 8rem;
     left: 1.5rem;
@@ -353,6 +353,10 @@ footer {
     font-size: var(--fs-s);
 }
 
+.end-title {
+    color: black;
+    font-size: var(--fs-m);
+}
 
 /*====== UTILITY CLASS ======*/
 
