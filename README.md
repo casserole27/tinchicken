@@ -66,9 +66,9 @@ Personal stretch goals
 
 ### Links
 
-[Scrim](https://scrimba.com/scrim/co92042e9b1c5b6d38428afea)
-[Github](https://github.com/casserole27/tinchicken)
-[Live Site](https://www.clewisdev.com/tinchicken/)
+- [Scrim](https://scrimba.com/scrim/co92042e9b1c5b6d38428afea)
+- [Github](https://github.com/casserole27/tinchicken)
+- [Live Site](https://www.clewisdev.com/tinchicken/)
 
 ## My process
 
@@ -88,10 +88,39 @@ Personal stretch goals
 
 - CSS custom properties
 - Responsive Web Design
+- Accessibility and keyboard focus
 - vanilla JavaScript
 - JavaScript classes
 
 ### What I learned
+
+ - Methods in constructor functions are for the instance of the class only and do not change the original data.
+ - Using booleans to manipulate data
+ - Disabling and reenabling buttons for better UX
+ ```javascript
+  heartBtn.disabled = true;
+```
+ - How to add keyboard focus if additional focus is needed: can use e.key or e.type
+ ```javascript
+ function removeImage(e) {
+    const profile = e.target.dataset.saved;
+
+    if (e.key === 'Enter' || e.type === 'click') {
+        if (profile) {
+            const index = likedProfiles.findIndex(item => item.name === profile)
+            if (index !== -1) {
+                likedProfiles.splice(index, 1);
+                renderSavedProfiles(likedProfiles);
+                profileCounter(likedProfiles);
+            };
+        };
+    };
+
+    if ((e.key === 'Enter' || e.type === 'click') && likedProfiles.length === 0) {
+        resetApp();
+    };
+};
+```
 
 
 ### Continued development
@@ -108,6 +137,13 @@ Personal stretch goals
    - use filter method to find hasBeenSwiped to render next chicken
 
 - [Paul's scrim](https://scrimba.com/scrim/coe824d17b7903c07531c5b36)
+    - use index variable to access original array instead of manipulating it with a .shift() method
+    - don't manipulate original data, setup for React 
+    ```javascript
+    //use index of array rather than manipulating or changing original chickensData array
+    let currentChickenIndex = 0;
+    let currentChicken = new Chicken(chickensData[currentChickenIndex])
+    ```
 
 - [Amir's project change](https://www.loom.com/share/2e61c3a728cc4474b4523fc5778b6fdf?sid=2fbe7f38-b6db-4530-933e-31a7490a3594)
 
@@ -126,6 +162,8 @@ Personal stretch goals
 
 
 ## Acknowledgments
+
+Felicity, Paul, and Amir 
 
 
 
