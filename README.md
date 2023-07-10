@@ -48,13 +48,27 @@ Personal stretch goals
 
 ### Screenshot
 
-![screenshot](#)
+<h2>Application UI</h2>
+<hr>
+
+![screenshot](images/screenshots/state01.png)
+
+<h2>Profile counter state</h2>
+<hr>
+
+![screenshot](images/screenshots/profile-state.png)
+
+<h2>Saved profile state</h2>
+<hr>
+
+![screenshot](images/screenshots/saved-profile-state.png)
+
 
 ### Links
 
-[Scrim](https://scrimba.com/scrim/co92042e9b1c5b6d38428afea)s
+[Scrim](https://scrimba.com/scrim/co92042e9b1c5b6d38428afea)
 [Github](https://github.com/casserole27/tinchicken)
-[Live Site](#)
+[Live Site](https://www.clewisdev.com/tinchicken/)
 
 ## My process
 
