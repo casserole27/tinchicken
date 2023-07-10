@@ -8,7 +8,12 @@ const counterEl = document.getElementById('profile-counter');
 const heartBtn = document.getElementById('heart-btn');
 const crossBtn = document.getElementById('cross-btn');
 
-let savedProfiles = [];
+let swipedProfiles = [];
+let likedProfiles = [];
+
+//use index of array rather than manipulating or changing original chickensData array
+let currentChickenIndex = 0;
+let currentChicken = new Chicken(chickensData[currentChickenIndex])
 
 const mainContainer = document.getElementById('main-container');
 const savedProfilesContainer =  document.getElementById('saved-profiles-container');
@@ -17,84 +22,90 @@ const savedProfilesContainer =  document.getElementById('saved-profiles-containe
 /****** FUNCTIONS ******/
 
 function getNewChicken() {
-    const nextChickenData = chickensData.shift();
-    return nextChickenData ? new Chicken(nextChickenData) : {};
-};
-
-let chicken = getNewChicken();
+    currentChickenIndex++
+    currentChicken = new Chicken(chickensData[currentChickenIndex]);
+    render()
+}
 
 function renderChicken() {
-    if (chicken.hasBeenSwiped) { 
         
-        if (chickensData.length > 0) {    
-            
+        if (currentChickenIndex < (chickensData.length - 1)) {    
+                        
             heartBtn.disabled = true;
             crossBtn.disabled = true;
-            saveChickenProfile(chicken)
             setTimeout(() => {
-                badgeEl.innerHTML = ''
-                chicken = getNewChicken()
-                render(); 
+                badgeEl.innerHTML = '';
+                getNewChicken();
                 heartBtn.disabled = false;
                 crossBtn.disabled = false;
             }, 1200);
         
+        } else if (currentChickenIndex === (chickensData.length - 1) && likedProfiles.length === 0) {
+        
+            setTimeout(() => {
+                flyTheCoop()
+            }, 1500);    
+        
         } else {
-            
-            saveChickenProfile(chicken) 
+        
             setTimeout(() => {
                 badgeEl.innerHTML = ''
-                renderSavedProfiles(savedProfiles); 
+                renderSavedProfiles(likedProfiles);
             }, 1500);    
         
         }
-    } 
-
 };
 
-const render = () => mainContainer.innerHTML = chicken.getChickenHtml()
+const render = () => mainContainer.innerHTML = currentChicken.getChickenHtml()
 
 render(); 
 
 function buttonSelection (e) {
     if (e.target.dataset.heart){
-        chicken.swipeChicken()
-        chicken.likeChicken()     
-        renderBadges()
-        renderChicken();
+        chickenChoice(true)
     } 
     if (e.target.dataset.cross) {
-        chicken.swipeChicken()
-        renderBadges()
-        renderChicken()
+        chickenChoice(false)
     };    
 }; 
 
-function renderBadges() {
-    if (chicken.hasBeenSwiped && chicken.hasBeenLiked) {
-        badgeEl.innerHTML = chicken.likeBadge()
-    } else {
-        badgeEl.innerHTML = chicken.nopeBadge()
-    }
+function chickenChoice(boolean) {
+    badgeEl.innerHTML = currentChicken.chickenStatus(boolean);
+    swipedProfiles.push(currentChicken);
+    likedChickenProfiles(swipedProfiles);
+    renderChicken();
 };
-
 
 //!ADDITIONAL FUNCTIONALITY
 
-//if hasBeenLiked on the object is set to true, push to profile to the saved profiles array and update the profile counter
-function saveChickenProfile(profile) {
-    if(chicken.hasBeenLiked) {
-        savedProfiles.push(profile);
-        profileCounter();
-    };
+//filter swiped profiles array to find profiles that hasBeenLiked === true
+//run profile counter function, passing likedProfiles array
+function likedChickenProfiles(arr){
+    likedProfiles = arr.filter(profile => profile.hasBeenLiked === true);
+    profileCounter(likedProfiles)
+}; 
+
+//count liked profiles based on length of array
+function profileCounter(arr) {
+    if (arr.length > 0) {
+        counterEl.classList.remove('hidden-counter');
+        counterEl.textContent = arr.length;
+    }    
 };
 
-//when profiles are saved, the counter is revealed and displays a number equal to the length of the saved profiles array
-function profileCounter() { 
-    counterEl.classList.remove('hidden-counter');
-    counterEl.textContent = savedProfiles.length;
+//function for the possibility of all profiles being "nope"
+function flyTheCoop() {
+    badgeEl.innerHTML = '';
+    document.getElementById('footer-container').classList.add('hidden');
+    mainContainer.innerHTML = `
+        <img src="https://photos.smugmug.com/Other/HOSTING/i-X4qs8d8/0/0821c8ba/XL/billinabw-XL.png"
+            class="chicken-img" 
+            alt="black and white image of chicken in the snow">
+    
+        <div class="txt-container">
+            <h1 class="end-title">The chickens have flown the coop!</h1>
+        </div>`
 };
-
 
 //when the profile button is clicked, or we reach the end of the data, render the saved profiles into a new page
 function renderSavedProfiles(arr) {
@@ -138,24 +149,24 @@ function removeImage(e) {
 
     if (e.key === 'Enter' || e.type === 'click') {
         if (profile) {
-            const index = savedProfiles.findIndex(item => item.name === profile)
+            const index = likedProfiles.findIndex(item => item.name === profile)
             if (index !== -1) {
-                savedProfiles.splice(index, 1);
-                renderSavedProfiles(savedProfiles);
-                profileCounter();
+                likedProfiles.splice(index, 1);
+                renderSavedProfiles(likedProfiles);
+                profileCounter(likedProfiles);
             };
         };
     };
 
-    if ((e.key === 'Enter' || e.type === 'click') && savedProfiles.length === 0) {
+    if ((e.key === 'Enter' || e.type === 'click') && likedProfiles.length === 0) {
         resetApp();
     };
 };
 
-
 //reset the whole app
 function resetApp() { 
-    profileCounter();
+    profileCounter(likedProfiles);
+    currentChickenIndex = 0;
     location.reload();
 }
 
@@ -163,7 +174,7 @@ function resetApp() {
 
 document.addEventListener('click', e => {
     if (e.target.id === 'profile-btn') {
-        renderSavedProfiles(savedProfiles);
+        renderSavedProfiles(likedProfiles)
     } else if (e.target.id === 'home-link') {
         resetApp();
     } else {
